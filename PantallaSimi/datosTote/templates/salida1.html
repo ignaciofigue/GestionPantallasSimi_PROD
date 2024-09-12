@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo_pagina }}</title>
+    <link rel="stylesheet" href="{% static 'css/stylesalida1.css' %}">
+</head>
+<body onload="focusSearchBar()">
+
+    <!-- Contenedor del logo -->
+    <div class="header-logo-container">
+        <div class="logo-left">
+            <a href="https://simple.ripley.cl/">
+                <img src="{% static 'images/logo_ripley.png' %}" alt="Logo Ripley">
+            </a>
+        </div>
+        <div class="right-column">
+            <div class="countdown-container">
+                <h2>Contador</h2>
+                <div id="countdown-timer">Total productos: {{ cantidad_total }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="left-column">
+            <h1>{{ titulo_pagina }}</h1>
+            
+            <!-- Buscador -->
+            <input type="text" id="codigoFilter" placeholder="Agregar SKU:" onkeyup="filterTable()">
+            
+            <!-- Tabla de objetos escaneados -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Salida</th>
+                        <th>Destino</th>
+                        <th>Detalle</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in objetos %}
+                    <tr class="{% if o.ultimo %} last-scanned {% endif %}">
+                        <td>{{ o.codigo }}</td>
+                        <td>{{ o.pallet }}</td>
+                        <td>{{ o.destino }}</td>
+                        <td>{{ o.detalle }}</td>
+                        <td>{{ o.cantidad }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <!-- Alerta visual cuando queden menos de 5 elementos -->
+            {% if cantidad_total < 5 %}
+            <div class="alerta">
+                Quedan menos de 5 productos. ¡Por favor, revisa el inventario!
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Reporte de objetos perdidos -->
+    <div class="input-container">
+        <input type="text" id="codigoObjetoPerdido" placeholder="Código objeto perdido">
+        <button onclick="reportarObjetoPerdido()">Reportar objeto perdido</button>
+    </div>
+
+    <script src="{% static 'js/ripley.js' %}"></script>
+</body>
+</html>

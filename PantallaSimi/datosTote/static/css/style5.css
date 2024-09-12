@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif; /* Fuente predeterminada */
+    margin: 0px; /* Márgenes externos */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fefefe; /* Cambio de color de fondo */
+}
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.left-column {
+    width: 45%; /* Ancho de la columna izquierda */
+    margin-bottom: 15px; /* Margen inferior */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo transparente */
+}
+.right-column {
+    width: 40%; /* Ancho de la columna derecha */
+    margin-bottom: 100px; /* Margen inferior */
+    background-color: rgba(255, 255, 255, 0.189); /* Fondo transparente */
+    display: flex; /* Mostrar como flexbox */
+    flex-direction: row; /* Cambio a disposición en fila */
+    justify-content: space-between; /* Alinear elementos en los extremos */
+    align-items: flex-start; /* Alinear elementos al principio */
+}
+/* Cambios a la tabla */
+table tbody tr.matched-row {
+    background-color: #ffce32 !important; /* Color de fila resaltada */
+    animation: blink-animation 0.2s infinite alternate; /* Animación de parpadeo */
+}
+
+/* Animación de parpadeo */
+@keyframes blink-animation {
+    from {
+        background-color: #f1f107; /* Color inicial */
+    }
+    to {
+        background-color: #ffffff; /* Color final */
+    }
+}
+h1 {
+    text-align: center; /* Alinear texto al centro */
+    margin-bottom: 20px; /* Margen inferior */
+    color: #333333; /* Cambio de color de texto */
+    font-size: 30px; /* Tamaño de fuente */
+}
+table {
+    width: 120%; /* Ancho de tabla */
+    border-collapse: collapse; /* Colapsar bordes de tabla */
+    font-size: 25px; /* Tamaño de fuente */
+}
+th, td {
+    padding: 8px 10px; /* Relleno */
+    text-align: left; /* Alinear texto a la izquierda */
+    border-bottom: 1px solid #cccccc; /* Borde inferior */
+    white-space: nowrap; /* No permitir saltos de línea */
+    overflow: hidden; /* Ocultar contenido extra */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es demasiado largo */
+}
+th {
+    background-color: #123ca8; /* Cambio de color de fondo */
+    color: #fefefe; /* Cambio de color de texto */
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo para filas pares */
+}
+tr:hover {
+    background-color: #e1e8f0; /* Color de fondo al pasar el ratón */
+}
+.center-text {
+    text-align: center; /* Alinear texto al centro */
+}
+
+/* Estilos para los recuadros de pallets */
+.recuadros-container {
+    display: flex; /* Mostrar como flexbox */
+    flex-direction: column; /* Dirección de los elementos */
+    width: 20%; /* Ancho del contenedor */
+}
+.container2 {
+    margin-top: 260px;
+    display: flex; /* Mostrar como flexbox */
+    flex-direction: column; /* Dirección de los elementos */
+    width: 20%; /* Ancho del contenedor */
+    color:white;
+    font:white;
+}
+.recuadro {
+    width: 30%; /* Ancho del recuadro */
+    margin-bottom: 20px; /* Margen inferior */
+    background-color: #f9f9f9; /* Cambio de color de fondo */
+    border: 1px solid #cccccc; /* Borde */
+    padding: 23px; /* Relleno */
+    text-align: center; /* Alinear texto al centro */
+    color:white;
+    font: white;
+}
+.recuadro-izquierda {
+    margin-right: 0; /* Eliminar margen derecho */
+}
+.recuadro-derecha {
+    margin-left: 0; /* Eliminar margen izquierdo */
+}
+/* Margen superior adicional para las secciones de flechas */
+.flechas-container {
+    margin-top: 320px; /* Ajusta este valor según sea necesario */
+    background-size: 1000px; /* Ajuste al tamaño */
+    background-repeat: no-repeat; /* No repetir */
+    background-position: center; /* Posición centrada */
+    color: white;
+    font:white;
+}
+
+/* Cambios de color para los cuadros de pallets A y B */
+.recuadro-izquierda {
+    background-color: #123ca8; /* Color de fondo para pallets A */
+}
+.recuadro-derecha {
+    background-color: #123ca8; /* Color de fondo para pallets B */
+}
+/* Margen superior adicional para las secciones de flechas */
+.flechas-container {
+    margin-top: 0px; /* Ajusta este valor según sea necesario */
+}
+/* Cambios de color para resaltar el pallet */
+.highlighted-pallet {
+    background-color: #ffce32; /* Color de resaltado para el pallet */
+    border-color: #ffcc32; /* Color de borde */
+    color: #333; /* Color de texto */
+}
+
+/* Cambios de color para resaltar la flecha izquierda */
+.highlighted-arrow-left {
+    background-color: #ffce32; /* Color de resaltado para la flecha izquierda */
+    border-color: #ffce32; /* Color de borde */
+    color: #333; /* Color de texto */
+}
+
+/* Cambios de color para resaltar la flecha derecha */
+.highlighted-arrow-right {
+    background-color: #ffce32; /* Color de resaltado para la flecha derecha */
+    border-color: #ffce32; /* Color de borde */
+    color: #333; /* Color de texto */
+}
+
+/* Clase para resaltar el último código escaneado */
+.last-scanned {
+    background-color: #f1f107 !important; /* Color de fondo resaltado */
+}

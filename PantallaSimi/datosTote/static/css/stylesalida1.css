@@ -1,0 +1,207 @@
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 20px; /* Espacio interno en todo el cuerpo */
+    background-color: #fefefe; /* Color de fondo de la página */
+}
+
+/* Contenedor principal para el contenido */
+.container {
+    width: 120%; /* Ancho del contenedor */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Espacio interno en el contenedor */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo con opacidad */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    margin-left: -10px; /* Ajuste del margen izquierdo */
+}
+
+/* Columna izquierda del contenedor principal */
+.left-column {
+    width: 45%; /* Ancho de la columna */
+    margin-bottom: 20px; /* Espacio debajo de la columna */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo con opacidad */
+}
+
+/* Columna derecha del contenedor principal */
+.right-column {
+    width: 40%; /* Ancho de la columna */
+    margin-bottom: 100px; /* Espacio debajo de la columna */
+    background-color: rgba(255, 255, 255, 0.189); /* Fondo con opacidad */
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-direction: row; /* Dirección de los elementos en fila */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: flex-start; /* Alineación de los elementos al principio */
+}
+
+/* Estilos para las filas de la tabla que coinciden */
+table tbody tr.matched-row {
+    background-color: #ffcc00 !important; /* Color de fondo para filas resaltadas */
+    animation: blink-animation 0.2s infinite alternate; /* Animación de parpadeo */
+}
+
+/* Definición de la animación de parpadeo */
+@keyframes blink-animation {
+    from {
+        background-color: #f1f107; /* Color inicial de la animación */
+    }
+    to {
+        background-color: #ffffff; /* Color final de la animación */
+    }
+}
+
+/* Estilos para el encabezado principal */
+h1 {
+    text-align: center; /* Alineación del texto en el centro */
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
+    color: #333333; /* Color del texto */
+    font-size: 30px; /* Tamaño de la fuente */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 120%; /* Ancho de la tabla */
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    font-size: 25px; /* Tamaño de la fuente en la tabla */
+}
+
+/* Estilos para celdas de la tabla */
+th, td {
+    padding: 8px 10px; /* Espacio interno en celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+    border-bottom: 1px solid #cccccc; /* Borde inferior de las celdas */
+    white-space: nowrap; /* Evita el salto de línea en el texto */
+    overflow: hidden; /* Oculta el desbordamiento de contenido */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos para texto largo */
+}
+
+/* Estilos para los encabezados de columna */
+th {
+    background-color: #000000; /* Fondo negro para encabezados */
+    color: #ffffff; /* Color del texto en los encabezados */
+}
+
+/* Estilos para filas pares en la tabla */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de fondo para filas pares */
+}
+
+/* Estilos para filas al pasar el cursor */
+tr:hover {
+    background-color: #e1e8f0; /* Color de fondo al pasar el cursor */
+}
+
+/* Contenedor para los recuadros de pallets */
+.recuadros-container {
+    display: flex; /* Usa Flexbox para el diseño */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    width: 10%; /* Ancho del contenedor */
+}
+/* Estilos para los recuadros individuales */
+.recuadro {
+    width: 30%; /* Ancho del recuadro */
+    margin-bottom: 20px; /* Espacio debajo del recuadro */
+    background-color: #f9f9f9; /* Color de fondo del recuadro */
+    border: 1px solid #cccccc; /* Borde del recuadro */
+    padding: 23px; /* Espacio interno del recuadro */
+    text-align: center; /* Alineación del texto en el centro */
+    color: white; /* Color del texto */
+}
+
+/* Estilos para el recuadro de la izquierda */
+.recuadro-izquierda {
+    margin-right: 0; /* Elimina el margen derecho */
+    background-color: #000000; /* Color negro de Ripley */
+}
+
+/* Estilos para los elementos resaltados */
+.highlighted-pallet, .highlighted-arrow-left, .highlighted-arrow-right {
+    background-color: #ffcc00; /* Fondo amarillo para elementos resaltados */
+    border-color: #000000; /* Color del borde */
+    color: #000; /* Color del texto */
+}
+
+/* Estilo para la fila con el último código escaneado */
+.last-scanned {
+    background-color: #ffcc00 !important; /* Color de fondo para la fila resaltada */
+    border-color: #ffcc00; /* Color del borde */
+}
+
+/* Estilos para el contenedor del logo en el encabezado */
+.header-logo-container {
+    display: flex; /* Usa Flexbox para el diseño */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Alineación vertical en el centro */
+    padding: 10px; /* Espacio interno del contenedor */
+}
+
+/* Estilos para el contador */
+.countdown-container {
+    border: 2px solid #000; /* Borde del contador */
+    padding: 50px; /* Espacio interno del contador */
+    background-color: #F9F9F9; /* Color de fondo del contador */
+    width: 300px; /* Ancho del contador */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra del contador */
+    text-align: left; /* Alineación del texto en la izquierda */
+    position: fixed; /* Fija el contador en la pantalla */
+    right: 150px; /* Espacio desde el borde derecho */
+    top: 40px; /* Espacio desde el borde superior */
+}
+
+/* Estilos para el temporizador dentro del contador */
+#countdown-timer {
+    font-size: 24px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilos para el contenedor del input y botón */
+.input-container {
+    margin-top: 20px; /* Espacio superior en el contenedor */
+}
+
+/* Estilos para los inputs y botones en el contenedor */
+.input-container input, .input-container button {
+    padding: 10px; /* Espacio interno */
+    margin-right: 10px; /* Espacio a la derecha */
+}
+
+/* Estilos para el botón de reportar objetos perdidos */
+button {
+    background-color: #ffcc00; /* Fondo amarillo */
+    border: none; /* Elimina el borde */
+    padding: 10px 20px; /* Espacio interno del botón */
+    color: black; /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilos para el botón al pasar el cursor */
+button:hover {
+    background-color: #000; /* Fondo negro */
+    color: white; /* Color del texto */
+}
+
+/* Estilos para la alerta de pocos productos */
+.alerta-pocos-productos {
+    background-color: #ffcc00; /* Fondo amarillo */
+    color: #000; /* Color del texto */
+    padding: 15px; /* Espacio interno */
+    font-weight: bold; /* Negrita */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Alineación del texto en el centro
+
+ */
+    animation: blink-animation 0.8s infinite alternate; /* Animación de parpadeo */
+}
+
+/* Estilos para las imágenes dentro del contenedor */
+.header-logo-container img {
+    width: 200px; /* Ancho del logo */
+    height: auto; /* Mantener la proporción */
+}

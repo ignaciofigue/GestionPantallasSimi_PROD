@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo_pagina }}</title>
+    <link rel="stylesheet" href="{% static 'css/style5.css' %}">
+</head>
+<body onload="focusSearchBar()">
+
+    <div class="container">
+        <!-- Columna izquierda: Contenedor de datos y filtro -->
+        <div class="left-column">
+            <!-- Título de la página -->
+            <h1>{{ titulo_pagina }}</h1>
+            <!-- Filtro de búsqueda por código -->
+            <input type="text" id="codigoFilter" placeholder="Filtrar por Codigo..." onkeyup="filterTable()">
+            <!-- Tabla de datos -->
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th>Id</th> -->
+                        <th>Codigo</th>
+                        <th>Pallet</th>
+                        <th>Destino</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in objetos %}
+                    <tr>
+                        <!-- <td>{{ o.identificador }}</td> -->
+                        <td>{{ o.codigo }}</td>
+                        <td>{{ o.pallet }}</td>
+                        <td>{{ o.destino }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Columna derecha: Contenedor con recuadros de pallets -->
+        <div class="right-column" id="rightColumn">
+            <!-- Recuadros de pallets A -->
+            <div class="recuadros-container" id="palletAContainer">
+                <div class="recuadro recuadro-izquierda" id="palletA7">A7</div> <!-- Recuadro Pallet A7 -->
+                <div class="recuadro recuadro-izquierda" id="palletA6">A6</div> <!-- Recuadro Pallet A6 -->
+                <div class="recuadro recuadro-izquierda" id="palletA5">A5</div> <!-- Recuadro Pallet A5 -->
+                <div class="recuadro recuadro-izquierda" id="palletA4">A4</div> <!-- Recuadro Pallet A4 -->
+                <div class="recuadro recuadro-izquierda" id="palletA3">A3</div> <!-- Recuadro Pallet A3 -->
+                <div class="recuadro recuadro-izquierda" id="palletA2">A2</div> <!-- Recuadro Pallet A2 -->
+                <div class="recuadro recuadro-izquierda" id="palletA1">A1</div> <!-- Recuadro Pallet A1 -->
+            </div>
+            <!-- Sección de flechas izquierda y derecha -->
+            <div class="recuadros-container flechas-container">
+                <!-- Flecha izquierda -->
+                <div class="recuadro recuadro-izquierda" id="flechaIzquierda">&#9664;</div> <!-- Flecha izquierda -->
+            </div>
+            <div class="container2" id="palletBContainer">
+                <div class="recuadro recuadro-derecha" id="palletB8">B8</div> <!-- Recuadro Pallet B15 -->
+                <div class="recuadro recuadro-derecha" id="palletB9">B9</div> <!-- Recuadro Pallet B16 -->
+                <div class="recuadro recuadro-derecha" id="palletB10">B10</div> <!-- Recuadro Pallet B17 -->
+                <div class="recuadro recuadro-derecha" id="palletB11">B11</div> <!-- Recuadro Pallet B18 -->
+            </div>
+            <div class="recuadros-container flechas-container">
+                <!-- Flecha derecha -->
+                <div class="recuadro recuadro-derecha" id="flechaDerecha">&#9654;</div> <!-- Flecha derecha -->
+            </div>
+            <!-- Recuadros de pallets B -->
+            <div class="recuadros-container" id="palletBContainer">
+                <div class="recuadro recuadro-derecha" id="palletB7">B7</div> <!-- Recuadro Pallet B7 -->
+                <div class="recuadro recuadro-derecha" id="palletB6">B6</div> <!-- Recuadro Pallet B6 -->
+                <div class="recuadro recuadro-derecha" id="palletB5">B5</div> <!-- Recuadro Pallet B5 -->
+                <div class="recuadro recuadro-derecha" id="palletB4">B4</div> <!-- Recuadro Pallet B4 -->
+                <div class="recuadro recuadro-derecha" id="palletB3">B3</div> <!-- Recuadro Pallet B3 -->
+                <div class="recuadro recuadro-derecha" id="palletB2">B2</div> <!-- Recuadro Pallet B2 -->
+                <div class="recuadro recuadro-derecha" id="palletB1">B1</div> <!-- Recuadro Pallet B1 -->
+            </div>
+        </div>
+    </div>
+    <script>
+        var clearFilterTimeout; // Variable para almacenar el timeout
+
+        // Función para resaltar el pallet específico
+        function highlightPallet(palletId) {
+            var pallet = document.getElementById(palletId);
+            if (pallet) {
+                pallet.classList.add('highlighted-pallet'); // Agrega la clase para resaltar el pallet
+            }
+        }
+
+        // Función para quitar el resaltado del pallet
+        function unhighlightPallet(palletId) {
+            var pallet = document.getElementById(palletId);
+            if (pallet) {
+                pallet.classList.remove('highlighted-pallet'); // Elimina la clase de resaltado del pallet
+            }
+        }
+
+        // Función para resaltar la flecha izquierda
+        function highlightLeftArrow() {
+            var arrow = document.getElementById('flechaIzquierda');
+            if (arrow) {
+                arrow.classList.add('highlighted-arrow-left'); // Agrega la clase para resaltar la flecha izquierda
+            }
+        }
+
+        // Función para quitar el resaltado de la flecha izquierda
+        function unhighlightLeftArrow() {
+            var arrow = document.getElementById('flechaIzquierda');
+            if (arrow) {
+                arrow.classList.remove('highlighted-arrow-left'); // Elimina la clase de resaltado de la flecha izquierda
+            }
+        }
+
+        // Función para resaltar la flecha derecha
+        function highlightRightArrow() {
+            var arrow = document.getElementById('flechaDerecha');
+            if (arrow) {
+                arrow.classList.add('highlighted-arrow-right'); // Agrega la clase para resaltar la flecha derecha
+            }
+        }
+
+        // Función para quitar el resaltado de la flecha derecha
+        function unhighlightRightArrow() {
+            var arrow = document.getElementById('flechaDerecha');
+            if (arrow) {
+                arrow.classList.remove('highlighted-arrow-right'); // Elimina la clase de resaltado de la flecha derecha
+            }
+        }
+
+        // Función para resaltar filas y pallets
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("codigoFilter");
+            filter = input.value.toUpperCase();
+            table = document.querySelector("table");
+            tr = table.getElementsByTagName("tr");
+            // Variable para almacenar el último pallet escaneado
+            var lastPalletScanned = null;
+            // Iterar sobre cada fila de la tabla
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; // Obtener la segunda columna (código)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    // Si el texto en la columna coincide con el filtro
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].classList.add("matched-row"); // Resaltar la fila
+                        var palletCell = tr[i].getElementsByTagName("td")[2]; // Obtener la tercera columna (pallet)
+                        if (palletCell) {
+                            var pallet = palletCell.textContent.trim(); // Obtener el nombre del pallet
+                            if (pallet.startsWith("A")) {
+                                highlightPallet("palletA" + pallet.charAt(1)); // Resaltar el pallet A
+                                unhighlightPallet("palletB" + pallet.charAt(1)); // Quitar resaltado del pallet B
+                                lastPalletScanned = 'A'; // Almacenar el último pallet escaneado
+                            } else if (pallet.startsWith("B")) {
+                                highlightPallet("palletB" + pallet.charAt(1)); // Resaltar el pallet B
+                                unhighlightPallet("palletA" + pallet.charAt(1)); // Quitar resaltado del pallet A
+                                lastPalletScanned = 'B'; // Almacenar el último pallet escaneado
+                            }
+                        }
+                    } else {
+                        tr[i].classList.remove("matched-row"); // Quitar resaltado de la fila
+                        var palletCell = tr[i].getElementsByTagName("td")[2]; // Obtener la tercera columna (pallet)
+                        if (palletCell) {
+                            var pallet = palletCell.textContent.trim(); // Obtener el nombre del pallet
+                            if (pallet.startsWith("A")) {
+                                unhighlightPallet("palletA" + pallet.charAt(1)); // Quitar resaltado del pallet A
+                            } else if (pallet.startsWith("B")) {
+                                unhighlightPallet("palletB" + pallet.charAt(1)); // Quitar resaltado del pallet B
+                            }
+                        }
+                    }
+                }
+            }
+            // Resaltar flechas según el último pallet escaneado
+            if (lastPalletScanned === 'A') {
+                highlightLeftArrow(); // Resaltar la flecha izquierda
+                unhighlightRightArrow(); // Quitar resaltado de la flecha derecha
+            } else if (lastPalletScanned === 'B') {
+                highlightRightArrow(); // Resaltar la flecha derecha
+                unhighlightLeftArrow(); // Quitar resaltado de la flecha izquierda
+            } else {
+                unhighlightLeftArrow(); // Quitar resaltado de la flecha izquierda
+                unhighlightRightArrow(); // Quitar resaltado de la flecha derecha
+            }
+            // Establecer un timeout para limpiar el filtro y mantener el resaltado del último código escaneado
+            clearTimeout(clearFilterTimeout);
+            clearFilterTimeout = setTimeout(function() {
+                input.value = ''; // Limpiar el filtro
+                for (i = 0; i < tr.length; i++) {
+                    tr[i].classList.remove("matched-row"); // Quitar resaltado de la fila
+                }
+                unhighlightLeftArrow(); // Quitar resaltado de la flecha izquierda
+                unhighlightRightArrow(); // Quitar resaltado de la flecha derecha
+            }, 2000); // 1000ms = 1s
+        }
+
+        // Función para establecer el foco en la barra de búsqueda
+        function focusSearchBar() {
+            document.getElementById("codigoFilter").focus(); // Establece el foco en la barra de búsqueda
+        }
+    </script>
+</body>
+</html>

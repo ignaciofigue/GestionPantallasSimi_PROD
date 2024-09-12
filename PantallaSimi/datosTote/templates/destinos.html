@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo_pagina }}</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ titulo_pagina }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Codigo</th>
+                    <th>Pallet</th>
+                    <th>Peso</th>
+                    <th>Destino</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in objetos %}
+                <tr>
+                    <td>{{ o.identificador }}</td>
+                    <td>{{ o.codigo }}</td>
+                    <td>{{ o.pallet }}</td>
+                    <td>{{ o.peso }}</td>
+                    <!-- <td>{{ o.salida }}</td> -->
+                    <td>{{ o.destino }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="grafico">
+            <!-- <h1>Gráfico de Salidas</h1> -->
+            <img src="data:image/png;base64,{{ graphic }}" alt="Gráfico de Salidas">
+        </div>
+    </div>   
+</body>
+</html>
+
+
+
+
